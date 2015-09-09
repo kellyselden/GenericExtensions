@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>GenericExtensions</id>
+        <version>0.0.1</version>
+        <authors>Kelly Selden</authors>
+        <projectUrl>https://github.com/kellyselden/GenericExtensions</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Generic extensions</description>
+        <tags>Generic Extensions</tags>
+    </metadata>
+    <files>
+        <file src="bin\Release\GenericExtensions.dll" target="lib\GenericExtensions.dll" />
+    </files>
+</package>
