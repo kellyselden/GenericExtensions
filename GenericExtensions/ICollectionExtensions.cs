@@ -16,9 +16,26 @@ namespace GenericExtensions
 			return source;
 		}
 
+		public static ICollection<TSource> Remove<TSource>(this ICollection<TSource> source, IEnumerable<TSource> collection)
+		{
+			foreach (TSource element in collection)
+			{
+				source.Remove(element);
+			}
+
+			return source;
+		}
+
 		public static ICollection<TSource> Remove<TSource>(this ICollection<TSource> source, Func<TSource, bool> predicate)
 		{
-			foreach (TSource element in source.Where(predicate).ToArray())
+			IEnumerable<TSource> removed;
+			return Remove(source, predicate, out removed);
+		}
+		public static ICollection<TSource> Remove<TSource>(this ICollection<TSource> source, Func<TSource, bool> predicate, out IEnumerable<TSource> removed)
+		{
+			removed = source.Where(predicate).ToArray();
+
+			foreach (TSource element in removed)
 			{
 				source.Remove(element);
 			}
@@ -28,7 +45,14 @@ namespace GenericExtensions
 
 		public static ICollection<TSource> Remove<TSource>(this ICollection<TSource> source, Func<TSource, int, bool> predicate)
 		{
-			foreach (TSource element in source.Where(predicate).ToArray())
+			IEnumerable<TSource> removed;
+			return Remove(source, predicate, out removed);
+		}
+		public static ICollection<TSource> Remove<TSource>(this ICollection<TSource> source, Func<TSource, int, bool> predicate, out IEnumerable<TSource> removed)
+		{
+			removed = source.Where(predicate).ToArray();
+
+			foreach (TSource element in removed)
 			{
 				source.Remove(element);
 			}
